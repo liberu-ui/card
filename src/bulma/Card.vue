@@ -1,0 +1,88 @@
+<template>
+    <div class="card animated"
+        v-if="!leaving">
+        <slot/>
+        <loader :show="loading"
+            size="medium"/>
+    </div>
+</template>
+
+<script>
+
+import Loader from '@enso-ui/loader';
+
+export default {
+    components: { Loader },
+
+    props: {
+        loading: {
+            type: Boolean,
+            default: false,
+        },
+        collapsed: {
+            type: Boolean,
+            default: false,
+        },
+    },
+
+    data: () => ({
+        leaving: false,
+    }),
+
+    computed: {
+        header() {
+            return this.$children.find(comp => comp.isHeader);
+        },
+        collapse() {
+            return !!this.header && this.header.$children.find(comp => comp.isCollapse);
+        },
+        content() {
+            return this.$children.find(comp => comp.isContent);
+        },
+        remove() {
+            return !!this.header && this.header.$children.find(comp => comp.isRemove);
+        },
+    },
+
+    mounted() {
+        if (!!this.collapse && !!this.content) {
+            this.content.expanded = !this.collapsed;
+            this.collapse.expanded = !this.collapsed;
+            this.header.$on('click', this.collapse.toggle);
+            this.collapse.$on('toggle', this.content.toggle);
+        }
+
+        this.content.$on('resize', size => this.$emit('resize', size));
+
+        if (this.remove) {
+            this.remove.$on('remove', () => (this.leaving = true));
+        }
+    },
+
+    methods: {
+        resize(size) {
+            this.content.resize(size);
+        },
+        destroy() {
+            this.$emit('remove');
+            this.$el.parentNode.removeChild(this.$el);
+            this.$destroy();
+        },
+    },
+};
+
+</script>
+
+<style lang="scss">
+    .card {
+        position: relative;
+
+        &.is-rounded {
+            border-radius: 0.5em;
+
+            .card-header {
+                border-radius: 0.5em;
+            }
+        }
+    }
+</style>
