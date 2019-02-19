@@ -5,10 +5,10 @@ import CardImage from '../src/bulma/parts/CardImage.vue';
 import CardFooter from '../src/bulma/parts/CardFooter.vue';
 import CardFooterItem from '../src/bulma/parts/CardFooterItem.vue';
 import CardControl from '../src/bulma/controls/CardControl.vue';
-import Badge from '../src/bulma/controls/Badge.vue';
-import Collapse from '../src/bulma/controls/Collapse.vue';
-import Refresh from '../src/bulma/controls/Refresh.vue';
-import Remove from '../src/bulma/controls/Remove.vue';
+import CardBadge from '../src/bulma/controls/CardBadge.vue';
+import CardCollapse from '../src/bulma/controls/CardCollapse.vue';
+import CardRefresh from '../src/bulma/controls/CardRefresh.vue';
+import CardRemove from '../src/bulma/controls/CardRemove.vue';
 
 export {
     Card,
@@ -18,8 +18,8 @@ export {
     CardFooter,
     CardFooterItem,
     CardControl,
-    Badge,
-    Collapse,
-    Refresh,
-    Remove,
+    CardBadge,
+    CardCollapse,
+    CardRefresh,
+    CardRemove,
 };
