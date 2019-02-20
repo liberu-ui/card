@@ -1,32 +1,26 @@
 <template>
-    <card-control @click="toggle()">
-        <span class="icon angle"
-            :aria-hidden="!expanded">
-            <fa icon="angle-down"/>
-        </span>
+    <card-control @click="toggle">
+        <dropdown-indicator v-model="collapsed"
+            @toggle="toggle()"/>
     </card-control>
 </template>
 
 <script>
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngleDown }
-    from '@fortawesome/free-solid-svg-icons';
+import DropdownIndicator from '@enso-ui/dropdown-indicator';
 import CardControl from './CardControl.vue';
 
-library.add(faAngleDown);
-
 export default {
-    components: { CardControl },
+    components: { DropdownIndicator, CardControl },
 
     data: () => ({
-        expanded: true,
+        collapsed: false,
         isCollapse: true,
     }),
 
     methods: {
         toggle() {
-            this.expanded = !this.expanded;
+            this.collapsed = !this.collapsed;
             this.$emit('toggle');
         },
     },

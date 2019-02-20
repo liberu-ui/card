@@ -46,8 +46,8 @@ export default {
 
     mounted() {
         if (!!this.collapse && !!this.content) {
-            this.content.expanded = !this.collapsed;
-            this.collapse.expanded = !this.collapsed;
+            this.content.collapsed = this.collapsed;
+            this.collapse.collapsed = this.collapsed;
             this.header.$on('click', this.collapse.toggle);
             this.collapse.$on('toggle', this.content.toggle);
         }

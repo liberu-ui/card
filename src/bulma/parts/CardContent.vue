@@ -10,13 +10,13 @@
 export default {
     data: () => ({
         ready: false,
-        expanded: true,
+        collapsed: false,
         isContent: true,
     }),
 
     computed: {
         maxHeight() {
-            if (!this.expanded) {
+            if (this.collapsed) {
                 return { maxHeight: 0 };
             }
 
@@ -40,7 +40,7 @@ export default {
 
     methods: {
         init() {
-            if (this.expanded) {
+            if (!this.collapsed) {
                 this.$el.style.maxHeight = this.$el.scrollHeight;
             }
             setTimeout(() => {
@@ -49,7 +49,7 @@ export default {
         },
         toggle() {
             const maxHeight = this.currentHeight();
-            this.expanded = !this.expanded;
+            this.collapsed = !this.collapsed;
             this.$nextTick(() => this
                 .$emit('resize', this.currentHeight() - maxHeight));
         },

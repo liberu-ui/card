@@ -609,6 +609,16 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@enso-ui/dropdown-indicator@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@enso-ui/dropdown-indicator/-/dropdown-indicator-1.0.0.tgz#3d04e4eb827a170560dd53a98109b373a6f17663"
+  integrity sha512-HwvpxnLmdjhc3zsg3scfm8I7y46oVgX16w3Ofe0iIfpk6Zsr+kfjgfKYzOO2BZRsDAJtJHGA6XH35NMJ+i83Dg==
+  dependencies:
+    "@fortawesome/fontawesome-svg-core" "^1.2.2"
+    "@fortawesome/free-solid-svg-icons" "^5.2.0"
+    "@fortawesome/vue-fontawesome" "^0.1.1"
+    vue "^2.5.16"
+
 "@enso-ui/loader@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@enso-ui/loader/-/loader-1.0.0.tgz#dbf58c49fb98fa4c1cd524ae0f39ac6349611c1a"
@@ -644,6 +654,11 @@
   integrity sha512-iujcXMyAvIbWM8W3jkOLpvJbR+rPpdN1QyqhZeJaLRdHPH4JmuovIAYP4vx5Sa1csZVXfRD1eDWqVZ/jGM620A==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.15"
+
+"@fortawesome/vue-fontawesome@^0.1.1":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.5.tgz#ea70a4d4ad0d6d617048a5b2a2ff33e21fe47d61"
+  integrity sha512-tiNZCgh+ZkUsyFfm2MQMMdHKRrKj82M7g0XFPSNNY+s5nRB82soy0US+xj0jGRy433b0c4WpylCOhgle3294Uw==
 
 "@vue/eslint-config-airbnb@^4.0.0":
   version "4.0.0"
