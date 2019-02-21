@@ -9,7 +9,7 @@
 
 <script>
 
-import Loader from '@enso-ui/loader';
+import Loader from '@enso-ui/loader/bulma';
 
 export default {
     components: { Loader },
