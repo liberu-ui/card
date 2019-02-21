@@ -2,8 +2,8 @@
     <div class="card animated"
         v-if="!leaving">
         <slot/>
-        <loader :show="loading"
-            size="medium"/>
+        <loader size="medium"
+            v-if="loading"/>
     </div>
 </template>
 
