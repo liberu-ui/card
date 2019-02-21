@@ -27,13 +27,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-    .icon.angle[aria-hidden="false"] {
-        transform: rotate(180deg);
-    }
-
-    .icon.angle {
-        transition: transform .300s ease;
-    }
-</style>
