@@ -1,7 +1,6 @@
 <template>
     <card-control @click="$emit('refresh')">
-        <span class="icon is-small"
-            v-bind="$attrs">
+        <span class="icon is-small">
             <fa icon="sync"/>
         </span>
     </card-control>
