@@ -81,7 +81,8 @@ export default {
             border-radius: 0.5em;
 
             .card-header {
-                border-radius: 0.5em;
+                border-top-left-radius: 0.5em;
+                border-top-right-radius: 0.5em;
             }
         }
     }
