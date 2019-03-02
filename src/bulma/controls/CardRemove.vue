@@ -1,5 +1,5 @@
 <template>
-    <card-control @click="$emit('remove')">
+    <card-control @click="cardState.removing = true">
         <a class="delete is-small"/>
     </card-control>
 </template>
@@ -8,10 +8,10 @@
 import CardControl from './CardControl.vue';
 
 export default {
+    name: 'CardRemove',
+
     components: { CardControl },
 
-    data: () => ({
-        isRemove: true,
-    }),
+    inject: ['cardState'],
 };
 </script>

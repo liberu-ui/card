@@ -1,61 +1,53 @@
 <template>
     <div class="card-content is-paddingless"
-        :style="computedStyle">
+        :style="contentStyle">
         <slot/>
     </div>
 </template>
 
 <script>
-
 export default {
+    name: 'CardContent',
+
+    inject: ['cardState'],
+
     data: () => ({
-        ready: false,
-        collapsed: false,
-        isContent: true,
+        contentStyle: {
+            overflowY: 'hidden',
+            maxHeight: 0,
+        },
     }),
 
-    computed: {
-        maxHeight() {
-            if (this.collapsed) {
-                return { maxHeight: 0 };
-            }
-
-            return this.ready
-                ? { maxHeight: `${this.$el.scrollHeight}px` }
-                : {};
-        },
-        overflowY() {
-            return { 'overflow-y': 'hidden' };
-        },
-        computedStyle() {
-            return Object.assign({}, this.maxHeight, this.overflowY);
-        },
+    watch: {
+        'cardState.collapsed': 'toggle',
+        'cardState.resizeSelf': 'resize',
     },
 
     mounted() {
-        this.$nextTick(() => {
-            this.init();
-        });
+        this.update();
     },
 
     methods: {
-        init() {
-            if (!this.collapsed) {
-                this.$el.style.maxHeight = this.$el.scrollHeight;
-            }
-            setTimeout(() => {
-                this.ready = true;
-            }, 100);
+        update() {
+            this.contentStyle.maxHeight = this.cardState.collapsed
+                ? 0
+                : `${this.$el.scrollHeight}px`;
         },
         toggle() {
-            const maxHeight = this.currentHeight();
-            this.collapsed = !this.collapsed;
-            this.$nextTick(() => this
-                .$emit('resize', this.currentHeight() - maxHeight));
+            const height = this.currentHeight();
+            this.update();
+
+            this.$nextTick(() => (this.cardState.resizeParent =                this.currentHeight() - height));
         },
-        resize(size) {
-            const maxHeight = this.currentHeight();
-            this.$el.style.maxHeight = `${maxHeight + size}px`;
+        resize(delta) {
+            if (delta === null) {
+                return;
+            }
+
+            this.$el.style.maxHeight = `${this.currentHeight() + delta}px`;
+            this.$nextTick(() => (this.cardState.resizeParent = delta));
+
+            this.cardState.resizeSelf = null;
         },
         currentHeight() {
             return parseInt(this.$el.style.maxHeight, 10);

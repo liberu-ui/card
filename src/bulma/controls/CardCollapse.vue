@@ -1,7 +1,6 @@
 <template>
-    <card-control @click="toggle">
-        <dropdown-indicator v-model="collapsed"
-            @toggle="toggle()"/>
+    <card-control @click="cardState.collapsed = !cardState.collapsed">
+        <dropdown-indicator :open="!cardState.collapsed"/>
     </card-control>
 </template>
 
@@ -11,19 +10,11 @@ import DropdownIndicator from '@enso-ui/dropdown-indicator';
 import CardControl from './CardControl.vue';
 
 export default {
+    name: 'CardCollapse',
+
     components: { DropdownIndicator, CardControl },
 
-    data: () => ({
-        collapsed: false,
-        isCollapse: true,
-    }),
-
-    methods: {
-        toggle() {
-            this.collapsed = !this.collapsed;
-            this.$emit('toggle');
-        },
-    },
+    inject: ['cardState'],
 };
 
 </script>

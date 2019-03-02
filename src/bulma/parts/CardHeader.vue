@@ -1,7 +1,7 @@
 <template>
     <header class="card-header is-clickable">
         <p class="card-header-title"
-            @click="$emit('click')">
+            @click="cardState.collapsed = !cardState.collapsed">
             <slot name="title"/>
         </p>
         <slot name="controls"/>
@@ -11,9 +11,9 @@
 <script>
 
 export default {
-    data: () => ({
-        isHeader: true,
-    }),
+    name: 'CardHeader',
+
+    inject: ['cardState'],
 };
 
 </script>

@@ -3,3 +3,7 @@
         <slot/>
   </div>
 </template>
+
+export default {
+  name: 'CardImage',
+}

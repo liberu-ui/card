@@ -4,3 +4,7 @@
         <slot/>
     </a>
 </template>
+
+export default {
+  name: 'CardControl',
+}

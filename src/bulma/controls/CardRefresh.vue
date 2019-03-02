@@ -16,6 +16,8 @@ import CardControl from './CardControl.vue';
 library.add(faSync);
 
 export default {
+    name: 'CardRefresh',
+
     components: { CardControl },
 };
 

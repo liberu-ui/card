@@ -1,6 +1,5 @@
 <template>
-    <div class="card animated"
-        v-if="!leaving">
+    <div class="card">
         <slot/>
         <loader size="medium"
             v-if="loading"/>
@@ -12,6 +11,8 @@
 import Loader from '@enso-ui/loader/bulma';
 
 export default {
+    name: 'Card',
+
     components: { Loader },
 
     props: {
@@ -23,50 +24,63 @@ export default {
             type: Boolean,
             default: false,
         },
+        transition: {
+            type: Boolean,
+            default: false,
+        },
     },
 
-    data: () => ({
-        leaving: false,
+    data: v => ({
+        cardState: {
+            collapsed: v.collapsed,
+            removing: false,
+            resizeSelf: null,
+            resizeParent: null,
+        },
     }),
 
-    computed: {
-        header() {
-            return this.$children.find(comp => comp.isHeader);
-        },
-        collapse() {
-            return !!this.header && this.header.$children.find(comp => comp.isCollapse);
-        },
-        content() {
-            return this.$children.find(comp => comp.isContent);
-        },
-        remove() {
-            return !!this.header && this.header.$children.find(comp => comp.isRemove);
+    inject: {
+        parentCardState: {
+            from: 'cardState',
+            default: {
+                resizeSelf: null,
+                resizeParent: null,
+            },
         },
     },
 
-    mounted() {
-        if (!!this.collapse && !!this.content) {
-            this.content.collapsed = this.collapsed;
-            this.collapse.collapsed = this.collapsed;
-            this.header.$on('click', this.collapse.toggle);
-            this.collapse.$on('toggle', this.content.toggle);
-        }
+    provide() {
+        return {
+            cardState: this.cardState,
+        };
+    },
 
-        this.content.$on('resize', size => this.$emit('resize', size));
-
-        if (this.remove) {
-            this.remove.$on('remove', () => (this.leaving = true));
-        }
+    watch: {
+        'cardState.removing': 'destroy',
+        'cardState.collapsed': 'toggle',
+        'cardState.resizeParent': 'resizeParent',
     },
 
     methods: {
-        resize(size) {
-            this.content.resize(size);
+        toggle(collapsed) {
+            this.$emit(collapsed ? 'collapsing' : 'expanding');
+        },
+        resizeParent(delta) {
+            if (delta === null) {
+                return;
+            }
+
+            this.$nextTick(() => (this.parentCardState.resizeSelf = delta));
+
+            this.cardState.resizeParent = null;
         },
         destroy() {
-            this.$emit('remove');
-            this.$el.parentNode.removeChild(this.$el);
-            this.$destroy();
+            this.$emit('removing');
+
+            if (!this.transition) {
+                this.$nextTick(() => this.$el.parentNode.removeChild(this.$el));
+                this.$destroy();
+            }
         },
     },
 };

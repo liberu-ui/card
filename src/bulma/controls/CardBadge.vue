@@ -10,6 +10,8 @@
 import CardControl from './CardControl.vue';
 
 export default {
+    name: 'CardBadge',
+
     components: { CardControl },
 
     props: {
