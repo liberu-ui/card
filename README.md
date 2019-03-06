@@ -20,8 +20,6 @@ Check the full documentation at  [docs.laravel-enso.com](https://docs.laravel-en
 
 ### Installation
 
-### Installation
-
 Install the package:
 ```
 npm i @enso-ui/card
