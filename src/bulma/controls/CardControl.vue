@@ -5,6 +5,8 @@
     </a>
 </template>
 
+<script>
 export default {
-  name: 'CardControl',
-}
+    name: 'CardControl',
+};
+</script>
