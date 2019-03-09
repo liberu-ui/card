@@ -15,6 +15,16 @@ export default {
 
     components: { Loader },
 
+    inject: {
+        parentCardState: {
+            from: 'cardState',
+            default: {
+                resizeSelf: null,
+                resizeParent: null,
+            },
+        },
+    },
+
     props: {
         loading: {
             type: Boolean,
@@ -38,16 +48,6 @@ export default {
             resizeParent: null,
         },
     }),
-
-    inject: {
-        parentCardState: {
-            from: 'cardState',
-            default: {
-                resizeSelf: null,
-                resizeParent: null,
-            },
-        },
-    },
 
     provide() {
         return {
@@ -84,7 +84,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="scss">
