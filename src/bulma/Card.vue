@@ -56,10 +56,8 @@ export default {
     },
 
     watch: {
-        collapsed: {
-            handler(collapsed) {
-                this.cardState.collapsed = collapsed;
-            },
+        collapsed(collapsed) {
+            this.cardState.collapsed = collapsed;
         },
         'cardState.removing': 'destroy',
         'cardState.collapsed': 'toggle',
