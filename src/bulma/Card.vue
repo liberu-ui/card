@@ -56,14 +56,25 @@ export default {
     },
 
     watch: {
+        collapsed: {
+            handler(collapsed) {
+                this.cardState.collapsed = collapsed;
+            },
+        },
         'cardState.removing': 'destroy',
         'cardState.collapsed': 'toggle',
         'cardState.resizeParent': 'resizeParent',
     },
 
     methods: {
+        collapse() {
+            this.toggle(false);
+        },
+        expand() {
+            this.toggle(true);
+        },
         toggle(collapsed) {
-            this.$emit(collapsed ? 'collapsing' : 'expanding');
+            this.$emit(collapsed ? 'collapse' : 'expand');
         },
         resizeParent(delta) {
             if (delta === null) {
@@ -75,11 +86,10 @@ export default {
             this.cardState.resizeParent = null;
         },
         destroy() {
-            this.$emit('removing');
-
             if (!this.transition) {
                 this.$nextTick(() => this.$el.parentNode.removeChild(this.$el));
                 this.$destroy();
+                this.$emit('remove');
             }
         },
     },

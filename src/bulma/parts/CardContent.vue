@@ -1,6 +1,6 @@
 <template>
     <div class="card-content is-paddingless"
-        :style="contentStyle">
+        :style="style">
         <slot/>
     </div>
 </template>
@@ -12,7 +12,7 @@ export default {
     inject: ['cardState'],
 
     data: () => ({
-        contentStyle: {
+        style: {
             overflowY: 'hidden',
             maxHeight: 0,
         },
@@ -29,15 +29,21 @@ export default {
 
     methods: {
         update() {
-            this.contentStyle.maxHeight = this.cardState.collapsed
-                ? 0
-                : `${this.$el.scrollHeight}px`;
+            if (this.cardState.collapsed) {
+                this.style.maxHeight = 0;
+                this.style.overflowY = 'hidden';
+                return;
+            }
+
+            this.style.maxHeight = `${this.$el.scrollHeight}px`;
+
+            setTimeout(() => this.style.overflowY = 'visible', 400);
         },
         toggle() {
             const height = this.currentHeight();
             this.update();
 
-            this.$nextTick(() => (this.cardState.resizeParent =                this.currentHeight() - height));
+            this.$nextTick(() => (this.cardState.resizeParent = this.currentHeight() - height));
         },
         resize(delta) {
             if (delta === null) {
