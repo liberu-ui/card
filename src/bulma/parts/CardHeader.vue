@@ -1,6 +1,6 @@
 <template>
-    <header class="card-header is-clickable"
-        :class="{ 'collapsed': cardState.collapsed }">
+    <header class="card-header"
+        :class="[{ 'collapsed': cardState.collapsed }, { 'is-clickable': cardState.collapsible}]">
         <p class="card-header-title"
             @click="toggle">
             <slot name="title"/>
