@@ -1,6 +1,7 @@
 <template>
-    <div class="card-content is-paddingless">
-        <slot v-if="!cardState.collapsed"/>
+    <div class="card-content"
+        v-if="!cardState.collapsed">
+        <slot/>
     </div>
 </template>
 
