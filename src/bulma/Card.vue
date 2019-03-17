@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 import Loader from '@enso-ui/loader/bulma';
 
 export default {
@@ -15,26 +14,16 @@ export default {
 
     components: { Loader },
 
-    inject: {
-        parentCardState: {
-            from: 'cardState',
-            default: {
-                resizeSelf: null,
-                resizeParent: null,
-            },
-        },
-    },
-
     props: {
-        loading: {
-            type: Boolean,
-            default: false,
-        },
         collapsed: {
             type: Boolean,
             default: false,
         },
-        transition: {
+        collapsible: {
+            type: Boolean,
+            default: false,
+        },
+        loading: {
             type: Boolean,
             default: false,
         },
@@ -43,15 +32,14 @@ export default {
     data: v => ({
         cardState: {
             collapsed: v.collapsed,
-            removing: false,
-            resizeSelf: null,
-            resizeParent: null,
+            collapsible: v.collapsible,
         },
     }),
 
     provide() {
         return {
             cardState: this.cardState,
+            toggle: this.toggle,
         };
     },
 
@@ -59,35 +47,12 @@ export default {
         collapsed(collapsed) {
             this.cardState.collapsed = collapsed;
         },
-        'cardState.removing': 'destroy',
-        'cardState.collapsed': 'toggle',
-        'cardState.resizeParent': 'resizeParent',
     },
 
     methods: {
-        collapse() {
-            this.toggle(false);
-        },
-        expand() {
-            this.toggle(true);
-        },
-        toggle(collapsed) {
-            this.$emit(collapsed ? 'collapse' : 'expand');
-        },
-        resizeParent(delta) {
-            if (delta === null) {
-                return;
-            }
-
-            this.$nextTick(() => (this.parentCardState.resizeSelf = delta));
-
-            this.cardState.resizeParent = null;
-        },
-        destroy() {
-            if (!this.transition) {
-                this.$nextTick(() => this.$el.parentNode.removeChild(this.$el));
-                this.$destroy();
-                this.$emit('remove');
+        toggle() {
+            if (this.cardState.collapsible) {
+                this.cardState.collapsed = !this.cardState.collapsed;
             }
         },
     },
@@ -100,11 +65,6 @@ export default {
 
         &.is-rounded {
             border-radius: 0.5em;
-
-            .card-header {
-                border-top-left-radius: 0.5em;
-                border-top-right-radius: 0.5em;
-            }
         }
     }
 </style>

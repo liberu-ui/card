@@ -1,5 +1,5 @@
 <template>
-    <card-control @click="cardState.collapsed = !cardState.collapsed">
+    <card-control @click="toggle">
         <dropdown-indicator :open="!cardState.collapsed"/>
     </card-control>
 </template>
@@ -14,7 +14,7 @@ export default {
 
     components: { DropdownIndicator, CardControl },
 
-    inject: ['cardState'],
+    inject: ['cardState', 'toggle'],
 };
 
 </script>
