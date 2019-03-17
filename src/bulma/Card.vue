@@ -46,6 +46,7 @@ export default {
     watch: {
         collapsed(collapsed) {
             this.cardState.collapsed = collapsed;
+            this.$emit(collapsed ? 'collapse' : 'expand');
         },
     },
 
