@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/card",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Card component",
   "main": "index.js",
   "scripts": {
