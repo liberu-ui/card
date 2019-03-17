@@ -33,6 +33,7 @@ export default {
         cardState: {
             collapsed: v.collapsed,
             collapsible: v.collapsible,
+            remove: false,
         },
     }),
 
@@ -48,6 +49,7 @@ export default {
             this.cardState.collapsed = collapsed;
             this.$emit(collapsed ? 'collapse' : 'expand');
         },
+        'cardState.remove': 'remove',
     },
 
     methods: {
@@ -55,6 +57,11 @@ export default {
             if (this.cardState.collapsible) {
                 this.cardState.collapsed = !this.cardState.collapsed;
             }
+        },
+        remove() {
+            this.$el.parentNode.removeChild(this.$el);
+            this.$emit('remove');
+            this.$destroy();
         },
     },
 };

@@ -1,5 +1,5 @@
 <template>
-    <card-control @click="cardState.removing = true">
+    <card-control @click="cardState.remove = true">
         <a class="delete is-small"/>
     </card-control>
 </template>

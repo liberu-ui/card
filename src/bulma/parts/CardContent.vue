@@ -1,6 +1,6 @@
 <template>
     <div class="card-content"
-        v-if="!cardState.collapsed">
+        v-show="cardState.collapsible ? !cardState.collapsed : true">
         <slot/>
     </div>
 </template>
