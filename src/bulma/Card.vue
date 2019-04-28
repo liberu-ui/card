@@ -59,9 +59,11 @@ export default {
             }
         },
         remove() {
-            this.$el.parentNode.removeChild(this.$el);
             this.$emit('remove');
-            this.$destroy();
+            this.$nextTick(() => {
+                this.$el.parentNode.removeChild(this.$el);
+                this.$destroy();
+            });
         },
     },
 };
