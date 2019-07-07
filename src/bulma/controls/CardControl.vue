@@ -10,3 +10,9 @@ export default {
     name: 'CardControl',
 };
 </script>
+
+<style lang="scss">
+    .card-header-icon {
+        padding: 0.75rem 0.75rem 0.75rem 0;
+    }
+</style>
