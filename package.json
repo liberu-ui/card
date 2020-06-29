@@ -35,8 +35,8 @@
     "eslint-plugin-vue": "^6.0.0"
   },
   "dependencies": {
-    "@enso-ui/dropdown-indicator": "1.0.x",
-    "@enso-ui/loader": "1.0.x",
+    "@enso-ui/dropdown-indicator": "^1.0",
+    "@enso-ui/loader": "^2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "bulma": "^0.8.0",
