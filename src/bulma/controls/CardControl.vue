@@ -1,6 +1,5 @@
 <template>
-    <a class="card-header-icon is-naked"
-        v-on="$listeners">
+    <a class="card-header-icon is-naked">
         <slot/>
     </a>
 </template>
