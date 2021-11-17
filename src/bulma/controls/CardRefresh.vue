@@ -7,7 +7,7 @@
 </template>
 
 <script>
-
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSync }
     from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ library.add(faSync);
 export default {
     name: 'CardRefresh',
 
-    components: { CardControl },
+    components: { Fa, CardControl },
 };
 
 </script>
