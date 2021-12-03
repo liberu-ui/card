@@ -29,6 +29,8 @@ export default {
         },
     },
 
+    emits: ['collapse', 'expand'],
+
     data: v => ({
         cardState: {
             collapsed: v.collapsed,

@@ -19,6 +19,8 @@ export default {
     name: 'CardRefresh',
 
     components: { Fa, CardControl },
+
+    emits: ['refresh'],
 };
 
 </script>
