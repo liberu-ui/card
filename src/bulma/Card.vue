@@ -1,5 +1,6 @@
 <template>
-    <div class="card">
+    <div class="card"
+        v-if="!cardState.removed">
         <slot/>
         <loader size="medium"
             v-if="loading"/>
@@ -29,13 +30,13 @@ export default {
         },
     },
 
-    emits: ['collapse', 'expand'],
+    emits: ['collapse', 'expand', 'remove'],
 
     data: v => ({
         cardState: {
             collapsed: v.collapsed,
             collapsible: v.collapsible,
-            remove: false,
+            removed: false,
         },
     }),
 
@@ -51,7 +52,7 @@ export default {
             this.cardState.collapsed = collapsed;
             this.$emit(collapsed ? 'collapse' : 'expand');
         },
-        'cardState.remove': 'remove',
+        'cardState.removed': 'remove',
     },
 
     methods: {
@@ -62,10 +63,6 @@ export default {
         },
         remove() {
             this.$emit('remove');
-            this.$nextTick(() => {
-                this.$el.parentNode.removeChild(this.$el);
-                this.$destroy();
-            });
         },
     },
 };
