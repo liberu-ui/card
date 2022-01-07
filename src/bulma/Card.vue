@@ -15,6 +15,13 @@ export default {
 
     components: { Loader },
 
+    provide() {
+        return {
+            cardState: this.cardState,
+            toggle: this.toggle,
+        };
+    },
+
     props: {
         collapsed: {
             type: Boolean,
@@ -39,13 +46,6 @@ export default {
             removed: false,
         },
     }),
-
-    provide() {
-        return {
-            cardState: this.cardState,
-            toggle: this.toggle,
-        };
-    },
 
     watch: {
         collapsed(collapsed) {
