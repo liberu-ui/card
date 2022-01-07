@@ -1,6 +1,5 @@
 <template>
-    <a class="card-header-icon is-naked"
-        v-bind="$attrs">
+    <a class="card-header-icon is-naked">
         <slot/>
     </a>
 </template>
