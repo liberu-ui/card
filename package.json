@@ -1,5 +1,5 @@
 {
-  "name": "@enso-ui/card",
+  "name": "@cgdsoftware/card",
   "version": "3.0.12",
   "description": "Card component",
   "main": "index.js",
@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/enso-ui/card#readme",
   "dependencies": {
-    "@enso-ui/dropdown-indicator": "^2.0",
-    "@enso-ui/loader": "^3.0",
+    "@cgdsoftware/dropdown-indicator": "^2.0",
+    "@cgdsoftware/loader": "^3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/vue-fontawesome": "3.0.0-5",
