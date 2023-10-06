@@ -1,10 +1,10 @@
 # Card
 
-![NPM License](https://img.shields.io/npm/l/@enso-ui/card.svg)
-![npm download](https://img.shields.io/npm/dm/@enso-ui/card.svg)
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/card.svg)
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/card.svg)
-![npm version](https://img.shields.io/npm/v/@enso-ui/card.svg)
+![NPM License](https://img.shields.io/npm/l/@liberu-ui/card.svg)
+![npm download](https://img.shields.io/npm/dm/@liberu-ui/card.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/liberu-ui/card.svg)
+![GitHub issues](https://img.shields.io/github/issues/liberu-ui/card.svg)
+![npm version](https://img.shields.io/npm/v/@liberu-ui/card.svg)
 
 Bulma styled Card component
 
