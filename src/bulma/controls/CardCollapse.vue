@@ -6,7 +6,7 @@
 
 <script>
 
-import DropdownIndicator from '@enso-ui/dropdown-indicator';
+import DropdownIndicator from '@liberu-ui/dropdown-indicator';
 import CardControl from './CardControl.vue';
 
 export default {

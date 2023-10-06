@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Loader from '@enso-ui/loader/bulma';
+import Loader from '@liberu-ui/loader/bulma';
 
 export default {
     name: 'Card',
